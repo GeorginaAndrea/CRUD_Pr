@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CRUD_PRODUCTOS.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create","", new { @class = "btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaID)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaID)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ProductoID }, new { @class = "btn btn-warnig" }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ProductoID }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ProductoID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
